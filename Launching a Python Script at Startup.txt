@@ -1,0 +1,45 @@
+-Launching a Python Script at Startup-----------------------------------------------------
+
+To begin determine where you want to store the program.
+I store the program in the debian home folder. 
+
+Start by navigating to the home directory:
+
+cd ~
+pwd
+
+
+Next open the the path to the location where the program will be stored:
+
+cd /home/debian
+
+
+Name your program and launch a blank python project:
+
+nano myProgramName.py
+
+Now write your program. When you are finished hit ctrl + x, and then Y,
+and then enter to navigate back to the terminal.
+
+Once in the terminal if you want to test your program you can type:
+
+sudo python myProgramName.py
+
+
+
+
+Setting up Run at Boot
+
+We are using Cron to run our python script at startup, so we will type:
+
+sudo crontab -e
+
+and at the very bottom of the page (after all the text) we will add:
+
+@reboot python /home/debian/myProgramName.py &
+
+(Don't forget the '&'!! It's very important and the it won't work if we don't have it!)
+Save the file by hitting ctrl + x, and then Y, and then enter to navigate back to the terminal.
+
+
+Now your program should be ready to run at startup!
